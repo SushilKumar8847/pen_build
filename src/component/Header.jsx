@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = ({ username }) => (
   <div className="bg-primary text-white py-4">
@@ -9,10 +9,29 @@ const Header = ({ username }) => (
           <h1 className="display-4 mb-0">{username ? username.toUpperCase() : "Default Name"}</h1>
         </div>
         <div className="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
-          <Link to={`/${username}`} className="btn btn-warning mx-2">Home</Link>
-          <Link to={`/${username}/about`} className="btn btn-light mx-2">About</Link>
-          <Link to={`/${username}/contact`} className="btn btn-light mx-2">Contact</Link>
-        </div>
+  <NavLink 
+    to={`/${username}`} 
+    className={({ isActive }) => `btn mx-2 ${isActive ? 'btn-warning' : 'btn-light'}`}
+    end // Use end for exact match
+  >
+    Home
+  </NavLink>
+  <NavLink 
+    to={`/${username}/about`} 
+    className={({ isActive }) => `btn mx-2 ${isActive ? 'btn-warning' : 'btn-light'}`}
+    end
+  >
+    About
+  </NavLink>
+  <NavLink 
+    to={`/${username}/contact`} 
+    className={({ isActive }) => `btn mx-2 ${isActive ? 'btn-warning' : 'btn-light'}`}
+    end
+  >
+    Contact
+  </NavLink>
+</div>
+
       </div>
     </div>
   </div>
